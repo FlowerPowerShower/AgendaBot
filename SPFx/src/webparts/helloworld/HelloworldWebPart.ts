@@ -13,6 +13,7 @@ import { IHelloworldProps } from './components/IHelloworldProps';
 
 export interface IHelloworldWebPartProps {
   description: string;
+  description2: string;
 }
 
 export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworldWebPartProps> {
@@ -21,7 +22,8 @@ export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworld
     const element: React.ReactElement<IHelloworldProps> = React.createElement(
       Helloworld,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        description2 : this.properties.description2
       }
     );
 
@@ -48,6 +50,18 @@ export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworld
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('description', {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('description2', {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('description3', {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('description4', {
+                  label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneTextField('description5', {
                   label: strings.DescriptionFieldLabel
                 })
               ]
