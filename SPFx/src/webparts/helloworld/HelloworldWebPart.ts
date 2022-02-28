@@ -3,17 +3,18 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
+  PropertyPaneSlider,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-
+import { PropertyFieldNumber } from '@pnp/spfx-property-controls/lib/PropertyFieldNumber';
 import * as strings from 'HelloworldWebPartStrings';
 import Helloworld from './components/Helloworld';
 import { IHelloworldProps } from './components/IHelloworldProps';
 
 export interface IHelloworldWebPartProps {
   description: string;
-  description2: string;
+  time : number
 }
 
 export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworldWebPartProps> {
@@ -23,7 +24,8 @@ export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworld
       Helloworld,
       {
         description: this.properties.description,
-        description2 : this.properties.description2
+        time : this.properties.time
+
       }
     );
 
@@ -52,17 +54,16 @@ export default class HelloworldWebPart extends BaseClientSideWebPart<IHelloworld
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
                 }),
-                PropertyPaneTextField('description2', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneSlider('timer', {
+                  label:"Minutes",  
+                min:2,  
+                max:60,  
+                value:10,  
+                showValue:true,
                 }),
-                PropertyPaneTextField('description3', {
-                  label: strings.DescriptionFieldLabel
-                }),
-                PropertyPaneTextField('description4', {
-                  label: strings.DescriptionFieldLabel
-                }),
-                PropertyPaneTextField('description5', {
-                  label: strings.DescriptionFieldLabel
+                PropertyFieldNumber('Timer', {
+                  key: "Timer",
+                  label: "Number value only"
                 })
               ]
             }
