@@ -21,8 +21,8 @@ export default class Helloworld extends React.Component<IHelloworldProps, ITimeC
    
  }
 
- public Epicness(): void {
-
+ public componentDidMount(): void {
+     
  const thisBoundedIncrementer = this.incrementCounter.bind(this);
  this.intervalId = setInterval(thisBoundedIncrementer, 1000);
  } 
